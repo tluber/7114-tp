@@ -23,6 +23,7 @@ class Truck:
         self.position = (0, 0)
         self.banks = []
         self.capacity = capacity
+        self.distance_traveled = 0
 
     def set_load(self, amount):
         self.load += amount
@@ -44,6 +45,12 @@ class Truck:
 
     def get_visited_banks(self):
         return self.banks
+
+    def add_distance(self, distance):
+        self.distance_traveled += distance
+
+    def get_distance_traveled(self):
+        return self.distance_traveled
 
 
 filename = 'problema_uno.txt'
@@ -132,6 +139,7 @@ while len(results) < dimension:
     for min_len_bank in min_len_banks:
         bank = list(filter(lambda b: b.get_id() == min_len_bank[0], banks))[0]
         if is_available_for_pick_up(truck, results, bank):
+            truck.add_distance(min_len_bank[1])
             truck.set_load(bank.get_demand())
             truck.set_position(bank.get_coord())
             results.append(bank)
@@ -140,3 +148,4 @@ while len(results) < dimension:
 f = open("results.txt", "w+")
 for res in results:
     f.write("%d " % (res.get_id()))
+print("TOTAL DISTANCE:", truck.get_distance_traveled())
