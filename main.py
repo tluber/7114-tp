@@ -1,6 +1,19 @@
 import numpy as np
 
 
+class Result:
+    def __init__(self, id, distance, banks):
+        self.id = id
+        self.distance = distance
+        self.banks = banks
+
+    def get_banks(self):
+        return self.banks
+
+    def get_distance(self):
+        return self.distance
+
+
 class Bank:
     def __init__(self, id, dem, x, y):
         self.id = id
@@ -126,26 +139,40 @@ def is_available_for_pick_up(m_truck, m_results, m_bank):
         return False
 
 
+def get_min_result(results):
+    def take_second(elem):
+        return elem.get_distance()
+
+    results.sort(key=take_second)
+
+    return results[0]
+
+
 banks = get_banks()
 dimension = get_dimension()
 max_capacity = get_capacity()
 
-truck = Truck(max_capacity)
+res = []
 
-results = []
+for bk in banks:
+    results = []
+    truck = Truck(max_capacity)
+    truck.set_position(bk.get_coord())
+    while len(results) < dimension:
+        min_len_banks = get_min_dist_banks(truck, banks)
+        for min_len_bank in min_len_banks:
+            bank = list(filter(lambda b: b.get_id() == min_len_bank[0], banks))[0]
+            if is_available_for_pick_up(truck, results, bank):
+                truck.add_distance(min_len_bank[1])
+                truck.set_load(bank.get_demand())
+                truck.set_position(bank.get_coord())
+                results.append(bank)
+                break
+    res.append(Result(bk.id, truck.get_distance_traveled(), results))
 
-while len(results) < dimension:
-    min_len_banks = get_min_dist_banks(truck, banks)
-    for min_len_bank in min_len_banks:
-        bank = list(filter(lambda b: b.get_id() == min_len_bank[0], banks))[0]
-        if is_available_for_pick_up(truck, results, bank):
-            truck.add_distance(min_len_bank[1])
-            truck.set_load(bank.get_demand())
-            truck.set_position(bank.get_coord())
-            results.append(bank)
-            break
+final_result = get_min_result(res)
 
 f = open("results.txt", "w+")
-for res in results:
-    f.write("%d " % (res.get_id()))
-print("TOTAL DISTANCE:", truck.get_distance_traveled())
+for bank in final_result.get_banks():
+    f.write("%d " % (bank.get_id()))
+print("TOTAL DISTANCE:", final_result.get_distance())
