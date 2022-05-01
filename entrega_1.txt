@@ -4,20 +4,22 @@
     capacidad del camion.
 
 # Ideas de resolución
-    Como no se tiene el dato de la posicion inicial del camion, asumi (0,0). Esto incide bastante en el resultado, ya
-    que el primer banco que se visite puede ser distinto y esto afecta al recorrido total. Pero como es un primero
-    intento de solucion, no me parece mal.
-    Con respecto a la resolucion, la idea es obtener la lista de bancos mas cercanos al camion y verificar si se puede
-    visitar el que esta mas cerca, si no se visita al siguiente y asi sucesivamente. La posicion del camion se va
-    actualizando a medida que visita los bancos (con las coordenadas del banco). El proceso no se termina hasta que se
-    visiten todos los bancos.
+    La idea es obtener la lista de bancos mas cercanos al camion y verificar si se puede visitar el que esta mas cerca,
+    si no se visita al siguiente y asi sucesivamente. La posicion del camion se va actualizando a medida que visita los
+    bancos (con las coordenadas del banco). El proceso no se termina hasta que se visiten todos los bancos.
 
 # Comentarios por commit
 
     - Commit db133ac6c8ed6e23f454eb4cfff90018eb2d63ed
-        En este commit hice lo que explique anteriormente, es medio un intento de fuerza bruta.
+        Como no se tiene el dato de la posicion inicial del camion, asumi (0,0). Esto incide bastante en el resultado,
+        ya que el primer banco que se visite puede ser distinto y esto afecta al recorrido total. Pero como es un
+        primer intento de solucion, no me parece mal.
+
+    - Commit 519cbe596a54cccd32ae1e37b59e45cc22c32646
+        Se va cambiando la posicion inicial del camion por la de cada banco y guardo el resultado del recorrido. Luego
+        me quedo con el resultado de menor distancia. Se mejoro el resultado obtenido anteriormente, aunque es muy poca
+        la diferencia.
 
 
 # Comentarios finales
-    Me parece que llegue a un resultado razonable aunque no es el optimo. Me queda pendiente ver el tema de la posicion
-    inicial del camion ya que incide en el calculo de la distancia.
+    Me parece que llegue a un resultado razonable aunque no es el optimo.
