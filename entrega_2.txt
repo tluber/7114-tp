@@ -1,0 +1,13 @@
+# Impresión inicial del problema
+
+
+# Ideas de resolución
+
+
+# Comentarios por commit
+
+    - Commit db133ac6c8ed6e23f454eb4cfff90018eb2d63ed
+
+
+
+# Comentarios finales
