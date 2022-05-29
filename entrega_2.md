@@ -5,17 +5,21 @@
 ### Variables constantes (dato)
 
 $$
-\text{CAPACIDAD: Importe maximo que puede llevar el camion.}\\\\
-\text{DIMENSION: Cantidad total de sucursales.}\\\\
-D_{ij}:\text{Distancia entre las sucursales i y j. Con i, j = [1, ..., DIMENSION]}\\\\
+\begin{align*}
+\text{CAPACIDAD: Importe maximo que puede llevar el camion.}\\
+\text{DIMENSION: Cantidad total de sucursales.}\\
+D_{ij}:\text{Distancia entre las sucursales i y j. Con i, j = [1, ..., DIMENSION]}\\
 DEM_{i}: \text{Demanda de la sucursal i.}
+\end{align*}
 $$
 
 ### Variables enteras
 
 $$
-U_{i}:\text{Orden en que se visita la sucursal i.}\\\\
+\begin{align*}
+U_{i}:\text{Orden en que se visita la sucursal i.}\\
 CAP_{i}: \text{Capacidad del camion en la sucursal i.}
+\end{align*}
 $$
 
 ### Variables bivalentes
@@ -50,11 +54,13 @@ $$
 #### Capacidad
 
 $$
+\begin{align*}
 CAP_{0} = 0 \\
 0 \le CAP_{i} \le CAPACIDAD \\
 \text{para todo i de 1 a DIMENSION.} \\
 CAP_{i} = CAP_{i-1} + DEM_{i} \\
 \text{para todo i de 1 a DIMENSION.}
+\end{align*}
 $$
 
 #### Funcional
