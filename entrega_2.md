@@ -5,21 +5,17 @@
 ### Variables constantes (dato)
 
 $$
-\text{CAPACIDAD: Importe maximo que puede llevar el camion.}\\
-\\
-\text{DIMENSION: Cantidad total de sucursales.}\\
-\\
-D_{ij}:\text{Distancia entre las sucursales i y j. Con i, j = [1, ..., DIMENSION]}\\
-\\
-DEM_{i}: \text{Demanda de la sucursal i.}\\\\
+\text{CAPACIDAD: Importe maximo que puede llevar el camion.}\\\\
+\text{DIMENSION: Cantidad total de sucursales.}\\\\
+D_{ij}:\text{Distancia entre las sucursales i y j. Con i, j = [1, ..., DIMENSION]}\\\\
+DEM_{i}: \text{Demanda de la sucursal i.}
 $$
 
 ### Variables enteras
 
 $$
-U_{i}:\text{Orden en que se visita la sucursal i.}\\
-\\
-CAP_{i}: \text{Capacidad del camion en la sucursal i.}\\
+U_{i}:\text{Orden en que se visita la sucursal i.}\\\\
+CAP_{i}: \text{Capacidad del camion en la sucursal i.}
 $$
 
 ### Variables bivalentes
@@ -33,21 +29,21 @@ $$
 #### Salidas
 
 $$
-\sum_{j=0}^\text{DIMENSION} Y_{ij} = 1 \\
+\sum_{j=0}^\text{DIMENSION} Y_{ij} = 1 \\\\
 \text{para todo i de 1 a DIMENSION, con i ≠ j.}
 $$
 
 #### Llegadas
 
 $$
-\sum_{i=0}^\text{DIMENSION} Y_{ij} = 1 \\
+\sum_{i=0}^\text{DIMENSION} Y_{ij} = 1 \\\\
 \text{para todo j de 1 a DIMENSION, con i ≠ j.}
 $$
 
 #### Subtours
 
 $$
-U_{i} - U_{j} + DIMENSION * Y_{ij} \le DIMENSION - 1 \\
+U_{i} - U_{j} + DIMENSION * Y_{ij} \le DIMENSION - 1 \\\\
 \text{para todo i,j de 1 a DIMENSION, con i ≠ j.}
 $$
 
@@ -55,14 +51,9 @@ $$
 
 $$
 CAP_{0} = 0 \\
-\\
 0 \le CAP_{i} \le CAPACIDAD \\
-
 \text{para todo i de 1 a DIMENSION.} \\
-\\
-
 CAP_{i} = CAP_{i-1} + DEM_{i} \\
-
 \text{para todo i de 1 a DIMENSION.}
 $$
 
