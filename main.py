@@ -53,7 +53,7 @@ class Truck:
         return self.distance_traveled
 
 
-filename = 'problema_dos.txt'
+filename = 'problema_tres.txt'
 
 
 def get_banks():
@@ -118,12 +118,12 @@ def get_min_dist_banks(m_truck, m_banks):
 def is_available_for_pick_up(m_truck, m_results, m_bank):
     if m_bank in m_results:
         return False
-
-    balance = m_truck.get_load() + m_bank.get_demand()
-    if 0 <= balance <= m_truck.get_capacity():
-        return True
-    else:
-        return False
+    return True
+    # balance = m_truck.get_load() + m_bank.get_demand()
+    # if 0 <= balance <= m_truck.get_capacity():
+    #     return True
+    # else:
+    #     return False
 
 
 banks = get_banks()
@@ -147,5 +147,6 @@ while len(results) < dimension:
 
 f = open("results.txt", "w+")
 for res in results:
-    f.write("%d " % (res.get_id()))
+    f.write("%d, " % (res.get_id()))
+print("size:", len(results))
 print("TOTAL DISTANCE:", truck.get_distance_traveled())
